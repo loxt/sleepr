@@ -7,10 +7,14 @@ services:
       dockerfile: ./apps/reservations/Dockerfile
       target: development
     command: pnpm run start:dev reservations
+    depends_on:
+      - mongo
     ports:
       - "8080:8080"
     volumes:
       - .:/usr/src/app
+    networks:
+      - sleepr
   mongo:
     image: mongo:6.0.5
     container_name: sleepr_mongodb
