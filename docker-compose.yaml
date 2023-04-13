@@ -15,6 +15,20 @@ services:
       - .:/usr/src/app
     networks:
       - sleepr
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - sleepr
   mongo:
     image: mongo:6.0.5
     container_name: sleepr_mongodb
