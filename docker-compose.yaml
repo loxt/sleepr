@@ -7,6 +7,8 @@ services:
       dockerfile: ./apps/reservations/Dockerfile
       target: development
     command: pnpm run start:dev reservations
+    env_file:
+      - ./apps/reservations/.env
     depends_on:
       - mongo
     ports:
@@ -21,6 +23,8 @@ services:
       dockerfile: ./apps/auth/Dockerfile
       target: development
     command: pnpm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
     depends_on:
       - mongo
     ports:
