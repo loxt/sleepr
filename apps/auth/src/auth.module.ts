@@ -25,6 +25,7 @@ import * as Joi from 'joi';
         signOptions: {
           expiresIn: `${configService.get<number>('JWT_EXPIRATION')}s`,
         },
+        inject: [ConfigService],
       }),
       inject: [ConfigService],
     }),
