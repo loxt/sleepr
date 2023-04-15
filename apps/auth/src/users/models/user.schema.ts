@@ -5,9 +5,14 @@ import { AbstractDocument } from '@app/common';
   versionKey: false,
 })
 export class UserDocument extends AbstractDocument {
-  @Prop()
+  @Prop({
+    type: String,
+  })
   email: string;
-  @Prop()
+
+  @Prop({
+    type: String,
+  })
   password: string;
 }
 
