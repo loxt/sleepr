@@ -16,7 +16,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
-        PORT: Joi.number().required(),
+        HTTP_PORT: Joi.number().required(),
+        TCP_PORT: Joi.number().required(),
         MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION: Joi.number().required(),
@@ -28,7 +29,6 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         signOptions: {
           expiresIn: `${configService.get<number>('JWT_EXPIRATION')}s`,
         },
-        inject: [ConfigService],
       }),
       inject: [ConfigService],
     }),
