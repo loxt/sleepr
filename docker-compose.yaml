@@ -17,6 +17,22 @@ services:
       - .:/usr/src/app
     networks:
       - sleepr
+  payments:
+    build:
+      context: .
+      dockerfile: ./apps/payments/Dockerfile
+      target: development
+    command: pnpm run start:dev payments
+    env_file:
+      - ./apps/payments/.env
+    depends_on:
+      - mongo
+    ports:
+      - "8083:8083"
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - sleepr
   auth:
     build:
       context: .
