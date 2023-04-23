@@ -8,12 +8,10 @@ COPY tsconfig.json tsconfig.json
 
 RUN npm install -g pnpm
 
-RUN pnpm install
-
 COPY apps/notifications /apps/notifications
 COPY libs libs
 
-RUN cd apps/notifications && pnpm install
+RUN pnpm install -r
 
 RUN pnpm run build
 
